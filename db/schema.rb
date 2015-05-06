@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150505195017) do
+ActiveRecord::Schema.define(version: 20150506192117) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.string   "title"
+    t.text     "description"
+    t.text     "sidebar"
+    t.text     "submission_text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "posts", force: :cascade do |t|
     t.string   "title",      limit: 500
@@ -22,6 +32,7 @@ ActiveRecord::Schema.define(version: 20150505195017) do
     t.string   "link",       limit: 2000
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "post_type"
   end
 
 end
